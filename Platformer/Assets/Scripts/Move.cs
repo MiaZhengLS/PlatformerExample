@@ -10,11 +10,13 @@ public class Move : MonoBehaviour
     private float maxAccer;
     private Rigidbody2D rb2d;
     private PlayerController controller;
-    private float desiredMove; 
+    private float desiredMove;
+    private Vector3 flipScale;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         controller = GetComponent<PlayerController>();
+        flipScale = Vector3.one;
     }
 
     void Update()
@@ -44,5 +46,13 @@ public class Move : MonoBehaviour
                 rb2d.velocity = velocity;
                 break;
         }
+
+        if (!Mathf.Approximately(desiredMove, 0) && Mathf.Sign(flipScale.x) != Mathf.Sign(desiredMove))
+        {
+            flipScale = transform.localScale;
+            flipScale.x *= -1;
+            transform.localScale = flipScale;
+        }
+
     }
 }

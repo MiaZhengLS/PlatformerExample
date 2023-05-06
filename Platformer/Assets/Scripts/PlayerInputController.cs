@@ -5,6 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="Create Input Controller/Player Input Controller", fileName = "PlayerInputController")]
 public class PlayerInputController : InputController
 {
+    public override bool GetJumpHoldingInput()
+    {
+        return Input.GetButton("Jump");
+    }
+
     public override bool GetJumpInput()
     {
         return Input.GetButtonDown("Jump");

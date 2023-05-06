@@ -9,19 +9,17 @@ public enum MoveMode
     SetVelocity
 }
 
+public enum PlayerState
+{
+    Idle,
+    Run,
+    Jump,
+    Fall
+}
+
 public class PlayerController : MonoBehaviour
 {
     public MoveMode moveMode;
     public InputController inputController;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public PlayerAnimationController animationController;
 }
